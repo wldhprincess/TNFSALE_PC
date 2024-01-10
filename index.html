@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://image.thenorthfacekorea.co.kr/cmsstatic/jxslider-ver-x3.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="jxslider-ver-x10.js"></script>
+    <style>
+        /* reset */
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+        li {list-style: none;}
+        a {text-decoration: none;}
+        .pc_sp {max-width: 1920px; margin:0 auto; overflow:hidden;}
+        .pc_sp button {border: 0; background-color: transparent; padding:0;}
+        .pc_sp img {display: block;}
+        .pc_sp .inner_sp {position: relative; width: 1920px; margin-left: -960px; left:50%;}
+        .pc_sp .inner_sp map area {outline-color: transparent;}
+
+        /* 슬라이더 공통 요소 */
+        .pc_sp .jx-slider{position: absolute;}
+        .pc_sp .jx-slider .jx-box > .jx-wrap > .jx-unit{background-color: transparent;}
+        .pc_sp .jx-slider .jx-box > .jx-wrap > .jx-unit .num{display: none;}
+
+        /* a태그 공통 요소 */
+        .pc_sp .kids_btn a, .pc_sp .join_btn a{width: 100%; height: 100%; display: block;}
+
+        /* APP 특가혜택 tab 버튼 활성화 */
+        .pc_sp .productTab_sp{position: absolute; top: 640px; left: 50%; transform: translateX(-50%);}
+        .pc_sp .productTab_sp .tab_sp{display: flex; gap: 30px; justify-content: center;}
+        .pc_sp .productTab_sp .tab_sp div{cursor: pointer;}
+
+        .pc_sp .productTab_sp .tab_sp div .on {position: absolute; top: 0; opacity: 0;}
+        .pc_sp .productTab_sp .tab_sp div:hover .on,.pc_sp .productTab_sp .tab_sp div.active .on {opacity: 1;}
+        .pc_sp .productTab_sp .product_sp{position: relative; top: 45px;  width: 1344px; }
+        .pc_sp .productTab_sp .product_sp > div{position: absolute; display: none;}
+        .pc_sp .productTab_sp .product_sp > div.padding{display: block;}
+        .pc_sp .productTab_sp .product_sp > div ul{display: flex; flex-wrap: wrap; gap: 40px 27px;}
+        .pc_sp .productTab_sp .product_sp > div .more_btn{position: absolute; left: 50%; transform: translateX(-50%); margin-top: 60px;}
+        /* 키즈 아이템 혜택 */
+        .pc_sp .kids_btn{width: 200px; height: 60px; position: absolute; top: 941.3px; left: 1208px;}
+        .pc_sp .kids_btn:hover{background: url(pc/kidsBtn_on_79673.png) no-repeat;}
+
+        /* 균일가 혜택 */
+        .pc_sp .jx-slider1{top: 210px; left: 867px;}
+        .pc_sp .jx-slider1 .jx-box{ overflow: hidden; width: calc(460*3px);}
+        .pc_sp .jx-slider1 .jx-box .price{ position: absolute; top: 0; width: 80px !important; height: 80px; left: 20px;}
+        .pc_sp .jx-slider1 .jx-box > .jx-wrap > .jx-unit .jx-cont{padding: 0 20px;}
+
+        /* 고객 감사제 스페셜 혜택 */
+        .pc_sp .join_btn{width: 250px; height: 60px; position: absolute;}
+        .pc_sp .join_btn:hover{background: url(pc/joinBtn_79673.jpg) no-repeat;}
+        .pc_sp .join_btn.join_btn1{left: 1051px; top: 478px;}
+        .pc_sp .join_btn.join_btn2{left: 369px; top: 1012px;}
+        .pc_sp .join_btn.join_btn3{left: 1052px; top: 1492px;}
+    </style>
+    <script>
+        $(function(){
+            // APP 특가혜택 탭 버튼 활성화
+            $('.tab_sp > div').on("click", function() {
+                // console.log("click");
+                var tabIndex= $('.tab_sp > div').index(this); // console.log(tabIndex);
+                $(this).addClass("active").siblings().removeClass("active");
+                $('.product_sp > div').hide();
+                $('.product_sp > div').eq(tabIndex).show();
+            });
+
+            // 슬라이더
+            $(function(e){
+            slider_pc1($(".jx-slider1"));
+            });
+
+            function slider_pc1(obj) {
+                var obj = obj;
+                $(function(){
+                    var option =
+                    {
+                            nView : obj.data('v'),
+                            bAuto: obj.data('a'),
+                            bDrag:obj.data('drag'),
+                            reCallFnc : obj.data('recall'),
+                            nAutoSpeed : 2000,
+                    };
+                    new JXSLIDER( obj ,  option );
+                })
+            }
+        })
+    </script>
+    <div class="pc_sp">
+        <div class="inner_sp">
+            <img src="pc/img1_79673.jpg" alt="">
+        </div>
+        <div class="inner_sp">
+            <div><img src="pc/img2_79673.jpg" alt=""></div>
+            <div class="productTab_sp">
+                <div class="tab_sp">
+                    <div class="active"><img src="pc/padding_79673.png" alt="padding"><img class="on" src="pc/padding_on_79673.png" alt="padding"></div>
+                    <div><img src="pc/jacket_79673.png" alt="jacket"><img class="on" src="pc/jacket_on_79673.png" alt="jacket"></div>
+                    <div><img src="pc/pants_79673.png" alt="pants"><img class="on" src="pc/pants_on_79673.png" alt="pants"></div>
+                    <div><img src="pc/shoes_79673.png" alt="shoes"><img class="on" src="pc/shoes_on_79673.png" alt="shoes"></div>
+                    <div><img src="pc/summer_79673.png" alt="summer"><img class="on" src="pc/summer_on_79673.png" alt="summer"></div>
+                    <div><a href="/product/"><img src="pc/sale_79673.png" alt="sale"></a></div>
+                </div>
+                <div class="product_sp">
+                    <div class="padding">
+                        <ul>
+                            <li><a href="/product/"><img src="pc/NJ1DL31A_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product2_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product3_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product4_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product5_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product6_79673.png" alt=""></a></li>
+                        </ul>
+                        <div class="more_btn"><a href="/product/"><img src="pc/moreBtn_79673.jpg" alt=""></a></div>
+                    </div>
+                    <div class="jacket">
+                        <ul>
+                            <li><a href="/product/"><img src="pc/product4_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product5_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product6_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/NJ1DL31A_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product2_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product3_79673.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="pants">
+                        <ul>
+                            <li><a href="/product/"><img src="pc/product2_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product3_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/NJ1DL31A_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product4_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product5_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product6_79673.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="shoes">
+                        <ul>
+                            <li><a href="/product/"><img src="pc/product5_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product6_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/NJ1DL31A_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product2_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product3_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product4_79673.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="summer">
+                        <ul>
+                            <li><a href="/product/"><img src="pc/product6_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/NJ1DL31A_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product2_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product3_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product4_79673.png" alt=""></a></li>
+                            <li><a href="/product/"><img src="pc/product5_79673.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner_sp">
+            <div><img src="pc/img3_79673.jpg" alt=""></div>
+            <div class="kids_btn"><a href="/product/"></a></div>
+        </div>
+        <div class="inner_sp">
+            <div><img src="pc/img4_79673.jpg" alt=""></div>
+            <div  class="jx-slider jx-slider1" id="jx-slider1"  data-v="3" data-a="true" data-recall="recall1" data-drag="false">
+                <div class="jx-box">
+                    <div class="jx-wrap">
+                        <div class="jx-unit"><a href="/product/NJ1DL31B" class="jx-cont"><div class="thumb"><img src="pc/NJ1DL31B_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                        <div class="jx-unit"><a href="/product/" class="jx-cont"><div class="thumb"><img src="pc/product8_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                        <div class="jx-unit"><a href="/product/" class="jx-cont"><div class="thumb"><img src="pc/product9_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                        <div class="jx-unit"><a href="/product/NJ1DL31B" class="jx-cont"><div class="thumb"><img src="pc/NJ1DL31B_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                        <div class="jx-unit"><a href="/product/" class="jx-cont"><div class="thumb"><img src="pc/product8_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                        <div class="jx-unit"><a href="/product/" class="jx-cont"><div class="thumb"><img src="pc/product9_79673.png" alt=""><img class="price" src="pc/price_79673.jpg" alt=""></div></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner_sp">
+            <div><img src="pc/img5_79673.jpg" alt=""></div>
+            <div class="join_btn_sp">
+                <div class="join_btn join_btn1"><a href="/product/"></a></div>
+                <div class="join_btn join_btn2"><a href="/product/"></a></div>
+                <div class="join_btn join_btn3"><a href="/product/"></a></div>
+            </div>
+        </div>
+        <div class="inner_sp">
+            <img src="pc/img6_79673.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>
